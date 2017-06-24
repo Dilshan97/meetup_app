@@ -40,7 +40,7 @@ export const getMeetup = (req, res) => {
             res.status(402).json({ error: true, message: 'Error with meetup' })
         }
         if (result) {
-            res.status(201).json(result);
+            res.status(201).json({meetups : result});
         }
     });
 }

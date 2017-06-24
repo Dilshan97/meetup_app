@@ -1,31 +1,50 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  ActivityIndicator
 } from 'react-native';
 
+import { fetchMeetups } from './constants/api';
+
 export default class meetup extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+      meetups: []
+    }
+  }
+
+  static defaultProps = {
+      fetchMeetups
+  }
+
+  async componentDidMount() {
+    this.setState({loading : true });
+    const data = await this.props.fetchMeetups();
+    this.setState({loading : false, meetups : data.meetups })
+  }
+
   render() {
+    if (this.state.loading) {
+      return (
+        <View style={styles.container}>
+          <ActivityIndicator size="large" />
+        </View>
+      )
+    }
+
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          Meet up!
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        {this.state.meetups.map((meetup, i) => (
+           <Text key={i}>{meetup.title}</Text>
+        ))}
       </View>
     );
   }
