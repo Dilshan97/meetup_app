@@ -1,9 +1,11 @@
-import mongoose from 'mongoose';
+var mongoose = require('mongoose');
 
-export default () => {
+const dbURI = 'mongodb://localhost/meetupDB';
+
+module.exports = () => {
     mongoose.Promise = global.Promise;
-    mongoose.connect('mongodb://localhost/meetupDB');
+    mongoose.connect(dbURI);
     mongoose.connection
-        .once('open', () => console.log('Mongodb Running'))
-        .on('error'), err => console.error(err);
+    .once('open', () => console.log('Mongodb Running'))
+    .on('error', err => console.error(err));
 }
