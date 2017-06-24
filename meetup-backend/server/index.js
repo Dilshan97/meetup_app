@@ -1,7 +1,7 @@
 "use strict";
 var express = require('express');
 
-import dbConfig from './config/db';
+var dbConfig = require('./config/db');
 
 const app = express();
 
