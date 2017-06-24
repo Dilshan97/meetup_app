@@ -1,11 +1,13 @@
 "use strict";
-var express = require('express');
-
-var dbConfig = require('./config/db');
+import express from 'express';
+import dbConfig from './config/db';
+import middleware from './config/middleware';
 
 const app = express();
 
 dbConfig();
+
+middleware(app);
 
 const PORT = process.env.PORT || 3000;
 
