@@ -1,49 +1,12 @@
 import React from 'react';
-import { 
-  StyleSheet, 
-  Text, 
-  View,
-  ActivityIndicator 
-} from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
+import Colors from './constants/Colors';
+import { HomeScreen } from './src/screens';
 
-import { fetchMeetups } from './constants/api';
+EStyleSheet.build(Colors);
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-      meetups: []
-    }
-  }
-
-  static defaultProps = {
-      fetchMeetups
-  }
-
-  async componentDidMount() {
-    this.setState({loading : true });
-    const data = await this.props.fetchMeetups();
-    this.setState({loading : false, meetups : data.meetups })
-  }
-
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>Meet Ups!</Text>
-        {this.state.meetups.map((meetup, i) => (
-           <Text key={i}>{meetup.title}</Text>
-        ))}
-      </View>
-    );
+    return <HomeScreen />;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
