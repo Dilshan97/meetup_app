@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
+import React from 'react';
+import { 
+  StyleSheet, 
+  Text, 
   View,
-  ActivityIndicator
+  ActivityIndicator 
 } from 'react-native';
 
 import { fetchMeetups } from './constants/api';
 
-export default class meetup extends Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,19 +28,9 @@ export default class meetup extends Component {
   }
 
   render() {
-    if (this.state.loading) {
-      return (
-        <View style={styles.container}>
-          <ActivityIndicator size="large" />
-        </View>
-      )
-    }
-
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Meet up!
-        </Text>
+        <Text>Meet Ups!</Text>
         {this.state.meetups.map((meetup, i) => (
            <Text key={i}>{meetup.title}</Text>
         ))}
@@ -53,20 +42,8 @@ export default class meetup extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    backgroundColor: '#fff',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+    justifyContent: 'center',
   },
 });
-
-AppRegistry.registerComponent('meetup', () => meetup);
