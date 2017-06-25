@@ -1,23 +1,29 @@
-"use strict";
+/* eslint-disable no-console */
+
 import express from 'express';
 import dbConfig from './config/db';
-import middleware from './config/middleware';
-import { meetupRoutes } from './modules';
+import middlewaresConfig from './config/middlewares';
+import { MeetupRoutes, GroupRoutes, UserRoutes } from './modules';
 
 const app = express();
 
+/**
+* Database
+*/
 dbConfig();
+/**
+* Middlewares
+*/
+middlewaresConfig(app);
 
-middleware(app);
-
-app.use('/api', [meetupRoutes]);
+app.use('/api', [MeetupRoutes, GroupRoutes, UserRoutes]);
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, err => {
-    if (err) {
-        console.error(err);
-    }{
-        console.log(`App listen to port: ${PORT}`);
-    }
-})  
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(`App listen to port: ${PORT}`);
+  }
+});

@@ -1,11 +1,14 @@
+/* eslint-disable no-console */
+
 import mongoose from 'mongoose';
 
-const dbURI = 'mongodb://localhost/meetupDB';
+import config from './config';
 
-module.exports = () => {
-    mongoose.Promise = global.Promise;
-    mongoose.connect(dbURI);
-    mongoose.connection
-    .once('open', () => console.log('Mongodb Running'))
+export default () => {
+  mongoose.Promise = global.Promise;
+  mongoose.connect(config.DB_URL);
+  mongoose.set('debug', true);
+  mongoose.connection
+    .once('open', () => console.log('Mongodb running'))
     .on('error', err => console.error(err));
-}
+};
