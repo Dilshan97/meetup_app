@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { MeetupApi } from '../../../constants/api';
 import { LoadingScreen } from '../../commons';
+import { MyMeetupsList } from './components';
 import styles from './styles/HomeScreen';
 
 const meetupApi = new MeetupApi();
@@ -19,9 +20,7 @@ class HomeScreen extends Component {
   async componentDidMount() {
     this.setState({ loading: true });
     const meetups = await this.props.meetupApi.featchGroupMeetups();
-    setTimeout(() => {
-      this.setState({ loading: false, meetups });
-    }, 2000);
+    this.setState({ loading: false, meetups });
   }
 
   render() {
@@ -30,7 +29,12 @@ class HomeScreen extends Component {
     }
     return (
       <View style={styles.root}>
-        <Text>HomeScreen</Text>
+        <View style={styles.topContainer}>
+          <Text>HomeScreen</Text>
+        </View>
+        <View style={styles.bottomContainer}>
+          <MyMeetupsList meetups={this.state.meetups} />
+        </View>
       </View>
     );
   }
