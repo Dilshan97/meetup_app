@@ -15,7 +15,7 @@ const MyMeetupsList = ({ meetups }) => (
               <Text style={styles.meetupCartTitle}>{meetup.title}</Text>
             </View>
 
-            <View style={styles.meetupCardButtonContainer}>
+            <View style={styles.meetupCardBottonContainer}>
               <Text>
                 {meetup.group.name}
               </Text>
