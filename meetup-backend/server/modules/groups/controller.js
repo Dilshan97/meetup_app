@@ -68,7 +68,7 @@ export const createGroupMeetup = async (req, res) => {
 
     return res.status(201).json({ error: false, meetup });
   } catch (e) {
-    return res.status(400).json({ error: true, message: 'Meetup cannot be created!' });
+    return res.status(400).json({ error: e, message: 'Meetup cannot be created!' });
   }
 };
 

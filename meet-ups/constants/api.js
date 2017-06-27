@@ -7,7 +7,7 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:3000/api';
 
-const faceGroupId = '594fc513059acd6b3e6cf530';
+const faceGroupId = '59512e8652dca218da57b12d';
 
 class MeetupApi {
   constructor() {
