@@ -40,6 +40,12 @@ const styles = EStyleSheet.create({
     top: '2%',
     left: '2.5%',
   },
+  meetupCardMetaName: {
+    fontSize: 15,
+  },
+  meetupCardMetaDate: {
+    fontSize: 13,
+  },
 
 });
 

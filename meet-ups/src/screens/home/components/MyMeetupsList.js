@@ -16,7 +16,7 @@ const MyMeetupsList = ({ meetups }) => (
             </View>
 
             <View style={styles.meetupCardBottonContainer}>
-              <Text>
+              <Text style={styles.meetupCardMetaName}>
                 {meetup.group.name}
               </Text>
               <Text style={styles.meetupCardMetaDate}>
