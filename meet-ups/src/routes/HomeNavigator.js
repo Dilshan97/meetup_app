@@ -22,8 +22,11 @@ export default TabNavigator({
   tabBarPosition: 'bottom',
   tabBarOptions: {
     showLabel: false,
+    showIcon: true,
     inactiveTintColor: Colors.blackBlueColor,
     activeTintColor: Colors.greenColor,
+    pressColor: Colors.greenColor,
+    indicatorStyle: Colors.greenColor,
     style: {
       backgroundColor: Colors.whiteColor,
     },
