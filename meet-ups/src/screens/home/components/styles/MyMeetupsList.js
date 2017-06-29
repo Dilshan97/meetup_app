@@ -9,16 +9,18 @@ const styles = EStyleSheet.create({
     width: 175,
     marginLeft: 2,
     marginRight: 2,
-    backgroundColor: '#f73859',
+    backgroundColor: '$greenColor',
   },
   title: {
     color: '$whiteColor',
     fontSize: 25,
+    fontFamily: 'opnsen',
   },
   titleContainer: {
     flex: 0.1,
     paddingHorizontal: '2.5%',
     paddingVertical: '2.5%',
+    fontFamily: 'opnsen',
   },
   contentContainer: {
     flex: 1,
@@ -39,12 +41,15 @@ const styles = EStyleSheet.create({
     color: '$whiteColor',
     top: '2%',
     left: '2.5%',
+    fontFamily: 'opnsenBold',
   },
   meetupCardMetaName: {
     fontSize: 15,
+    fontFamily: 'opnsen',
   },
   meetupCardMetaDate: {
     fontSize: 13,
+    fontFamily: 'opnsenLight',
   },
 
 });
