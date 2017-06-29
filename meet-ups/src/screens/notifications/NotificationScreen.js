@@ -4,9 +4,15 @@ import {
   Text,
 } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
+import Colors from '../../../constants/Colors';
 
 class NotificationScreen extends Component {
-  static navigationOptions = { tabBarIcon: ({ tintColor }) => (<Entypo name="notification" size={25} color={tintColor} />) }
+  static navigationOptions = {
+    headerStyle: {
+      backgroundColor: Colors.greenColor,
+    },
+    tabBarIcon: ({ tintColor }) => (<Entypo name="notification" size={25} color={tintColor} />),
+  }
 
   render() {
     return (

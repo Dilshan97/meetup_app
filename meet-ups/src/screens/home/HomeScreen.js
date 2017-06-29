@@ -6,6 +6,7 @@ import { MeetupApi } from '../../../constants/api';
 import { LoadingScreen } from '../../commons';
 import { MyMeetupsList } from './components';
 import styles from './styles/HomeScreen';
+import Colors from '../../../constants/Colors';
 
 const meetupApi = new MeetupApi();
 
@@ -14,7 +15,12 @@ class HomeScreen extends Component {
     meetupApi,
   }
 
-  static navigationOptions = { tabBarIcon: ({ tintColor }) => (<FontAwesome name="home" size={25} color={tintColor} />) }
+  static navigationOptions = {
+    headerStyle: {
+      backgroundColor: Colors.greenColor,
+    },
+    tabBarIcon: ({ tintColor }) => (<FontAwesome name="home" size={25} color={tintColor} />),
+  }
 
   state = {
     loading: false,
