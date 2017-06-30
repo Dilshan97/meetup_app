@@ -17,10 +17,9 @@ const styles = EStyleSheet.create({
     fontFamily: 'opnsen',
   },
   titleContainer: {
-    flex: 0.1,
+    flex: 0.2,
     paddingHorizontal: '2.5%',
     paddingVertical: '2.5%',
-    fontFamily: 'opnsen',
   },
   contentContainer: {
     flex: 1,
