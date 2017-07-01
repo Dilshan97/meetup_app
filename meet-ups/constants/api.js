@@ -1,8 +1,3 @@
-// export const fetchMeetups = () => fetch('http://localhost:3000/api/meetups')
-//   .then((response) => response.json())
-//   .catch((error) => {
-//     console.error(error);
-//   });
 import axios from 'axios';
 import { Platform } from 'react-native';
 
@@ -16,18 +11,21 @@ if (Platform.OS !== 'ios') {
 
 axios.defaults.baseURL = url;
 
-const faceGroupId = '59512f0c52dca218da57b130';
+const fakeGroupId = '59512f0c52dca218da57b130';
 
 class MeetupApi {
   constructor() {
-    this.groupId = faceGroupId;
+    this.groupId = fakeGroupId;
     this.path = `/groups/${this.groupId}/meetups`;
   }
 
-  async featchGroupMeetups() {
-    const { data } = await axios.get(this.path);
-
-    return data.meetups;
+  async fetchGroupMeetups() {
+    try {
+      const { data } = await axios.get(this.path);
+      return data.meetups;
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
 
