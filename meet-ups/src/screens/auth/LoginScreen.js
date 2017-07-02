@@ -38,7 +38,7 @@ export default class LoginScreen extends Component {
     return (
       <FlexContainer>
         <FlexContainer>
-          <Text style={Fonts.authTitle}>Meetup Me</Text>
+          <Text style={Fonts.authTitle}>GatherUp</Text>
         </FlexContainer>
         <FlexContainer>
           <FlexContainer>
