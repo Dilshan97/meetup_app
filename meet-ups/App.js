@@ -8,7 +8,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import Root from './src/Root';
 
 import Colors from './constants/Colors';
-import { cachedFonts } from './helpers';
+import { fontAssets } from './helpers';
 import store from './src/redux/store';
 
 EStyleSheet.build(Colors);
@@ -23,21 +23,6 @@ export default class App extends React.Component {
   }
 
   async _loadAssetAsync() {
-    const fontAssets = cachedFonts([
-      {
-        opnsen: require('./assets/fonts/OpenSans-Regular.ttf'),
-      },
-      {
-        opnsenBold: require('./assets/fonts/OpenSans-Bold.ttf'),
-      },
-      {
-        opnsenLight: require('./assets/fonts/OpenSans-Light.ttf'),
-      },
-      {
-        opnsenItalic: require('./assets/fonts/OpenSans-Italic.ttf'),
-      },
-    ]);
-
     await Promise.all(fontAssets);
 
     this.setState({ fontLoaded: true });

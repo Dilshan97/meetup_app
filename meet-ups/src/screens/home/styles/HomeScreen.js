@@ -14,7 +14,9 @@ const styles = EStyleSheet.create({
   bottomContainer: {
     flex: 0.9,
   },
-
+  addButton: {
+    marginRight: 4,
+  },
 });
 
 export default styles;
