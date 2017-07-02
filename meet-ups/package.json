@@ -5,7 +5,9 @@
   "author": "thusitha jayalath",
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
-  "scripts": {},
+  "scripts": {
+    "postinstall": "rndebugger-open"
+  },
   "dependencies": {
     "axios": "^0.16.2",
     "expo": "^18.0.4",
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "eslint-config-equimper": "^2.1.2",
+    "react-native-debugger-open": "^0.3.11",
     "redux-logger": "^3.0.6"
   }
 }

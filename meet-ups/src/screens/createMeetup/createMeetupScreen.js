@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { FormLabel, FormInput, Button } from 'react-native-elements';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 
 import { MeetupApi } from '../../../constants/api';
-
+import { CreateMeetupForm } from './components';
 import Colors from '../../../constants/Colors';
 import styles from './styles/createMeetupScreen';
 
@@ -76,50 +75,16 @@ class CreateMeetupScreen extends Component {
       description,
       date,
     });
-
-    console.log(res);
   }
 
   render() {
     return (
       <View style={styles.root}>
-        <View style={styles.container}>
-          <View style={styles.item}>
-            <FormLabel fontFamily="opnsen">Title</FormLabel>
-            <FormInput
-              onChangeText={this._chnageTitle}
-              value={this.state.title}
-              selectionColor={Colors.greenColor}
-            />
-          </View>
-          <View style={styles.item}>
-            <FormLabel fontFamily="opnsen">Description</FormLabel>
-            <FormInput
-              onChangeText={this._chnageDescription}
-              value={this.state.description}
-              selectionColor={Colors.greenColor}
-              multiline
-            />
-          </View>
-          <View style={styles.item}>
-            <Button
-              onPress={this._showDateTimePicker}
-              title={this._checkTitle()}
-              raised
-              fontFamily="opnsen"
-            />
-          </View>
-          <View style={styles.buttonCreate}>
-            <Button
-              backgroundColor={Colors.greenColor}
-              title="Create Meetup"
-              raised
-              fontFamily="opnsen"
-              disabled={this._checkIfButtonDisable()}
-              onPress={this._createMeetup}
-            />
-          </View>
-        </View>
+        <CreateMeetupForm
+          createMeetup={this._createMeetup}
+          showDateTimePicker={this._showDateTimePicker}
+          checkTitle={this._checkTitle()}
+        />
         <DateTimePicker
           isVisible={this.state.isDateTimePickerVisible}
           onConfirm={this._handleDatePicked}
