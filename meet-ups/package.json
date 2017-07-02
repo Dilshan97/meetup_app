@@ -7,8 +7,8 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "postinstall": "rndebugger-open",
-    "lint" : "eslint src main.js",
-    "lint:fix" : "eslint --fix src App.js"
+    "lint": "eslint src main.js",
+    "lint:fix": "eslint --fix src App.js"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -24,7 +24,8 @@
     "redux": "^3.7.1",
     "redux-form": "^6.8.0",
     "redux-promise-middleware": "^4.2.1",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "styled-components": "^2.1.0"
   },
   "devDependencies": {
     "eslint-config-equimper": "^2.1.2",
