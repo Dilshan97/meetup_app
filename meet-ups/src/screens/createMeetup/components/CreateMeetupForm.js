@@ -12,6 +12,9 @@ const CreateMeetupForm = ({
   createMeetup,
   showDateTimePicker,
   checkTitle,
+  handleSubmit,
+  invalid,
+  submiting,
 }) => (
   <View style={styles.container}>
     <Field
@@ -43,7 +46,8 @@ const CreateMeetupForm = ({
         title="Create Meetup"
         raised
         fontFamily="opnsen"
-        onSubmit={createMeetup}
+        disabled={invalid || submiting}
+        onPress={handleSubmit(createMeetup)}
       />
     </View>
   </View>

@@ -11,7 +11,7 @@ class ProfileScreen extends Component {
     headerStyle: {
       backgroundColor: Colors.greenColor,
     },
-    tabBarIcon: ({ tintColor }) => (<MaterialIcons name="account-circle" size={25} color={tintColor} />)
+    tabBarIcon: ({ tintColor }) => (<MaterialIcons name="account-circle" size={25} color={tintColor} />),
   }
 
   render() {

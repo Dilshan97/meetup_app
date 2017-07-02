@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import DateTimePicker from 'react-native-modal-datetime-picker';
+import { connect } from 'react-redux';
 import moment from 'moment';
 
-import { MeetupApi } from '../../../constants/api';
 import { CreateMeetupForm } from './components';
+import { LoadingScreen } from '../../commons';
+import { createMeetup } from './actions';
 import Colors from '../../../constants/Colors';
 import styles from './styles/createMeetupScreen';
 
-const meetupApi = new MeetupApi();
-
-class CreateMeetupScreen extends Component {
+@connect(
+  state => ({
+    meetup: state.createMeetup,
+  }),
+  { createMeetup }
+)
+export default class CreateMeetupScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: 'Create a new Meetup',
     headerStyle: {
@@ -33,8 +39,6 @@ class CreateMeetupScreen extends Component {
   state = {
     isDateTimePickerVisible: false,
     date: moment(),
-    title: '',
-    description: '',
   }
 
   _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true })
@@ -55,29 +59,36 @@ class CreateMeetupScreen extends Component {
   }
 
   _checkIfButtonDisable() {
-    const { title, description, date } = this.state;
+    const { date } = this.state;
 
-    if (title.length > 5 && description.length > 5 && date > moment()) {
+    if (date > moment()) {
       return false;
     }
     return true;
   }
 
-  _chnageTitle = title => this.setState({ title })
-
-  _chnageDescription = description => this.setState({ description })
-
-  _createMeetup = async () => {
-    const { title, description, date } = this.state;
-
-    const res = await meetupApi.createGroupMeetups({
-      title,
-      description,
-      date,
-    });
+  _createMeetup = async values => {
+    await this.props.createMeetup(values);
+    this.props.navigation.goBack();
   }
 
   render() {
+    const {
+      meetup,
+    } = this.props;
+    if (meetup.isLoading) {
+      return (
+        <View style={styles.root}>
+          <LoadingScreen />
+        </View>
+      );
+    } else if (meetup.error.on) {
+      return (
+        <View style={styles.root}>
+          <Text>{meetup.error.message}</Text>
+        </View>
+      );
+    }
     return (
       <View style={styles.root}>
         <CreateMeetupForm
@@ -95,5 +106,3 @@ class CreateMeetupScreen extends Component {
     );
   }
 }
-
-export default CreateMeetupScreen;
