@@ -4,7 +4,7 @@ export default {
   authTitle: {
     fontSize: 30,
     fontFamily: 'opnsenBold',
-    color: Colors.redColor,
+    color: Colors.greenColor,
     backgroundColor: 'transparent',
   },
   authWelcomeTitle: {
